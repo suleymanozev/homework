@@ -28,11 +28,6 @@ export const Carousel = ({items, autoplay = true, interval = 5000}: CarouselProp
         }
     });
 
-    new Array(3).fill(true).map((_, i) => items[(items.indexOf(currentItem) + 1 + i) % items.length]).map((item) => {
-            console.log(item);
-        }
-    )
-
     const nextItem = () => {
         setCurrentItem(items[items.indexOf(currentItem) === items.length - 1 ? 0 : items.indexOf(currentItem) + 1]);
     };
