@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import type {Photo} from "../types/photo";
 import {Box, IconButton} from "@mui/material";
 import {ArrowBack, ArrowForward} from "@mui/icons-material";
+import {CarouselThumbnail} from "./CarouselThumbnail.tsx";
 
 interface CarouselProps {
     items: Photo[];
@@ -27,6 +28,11 @@ export const Carousel = ({items, autoplay = true, interval = 5000}: CarouselProp
         }
     });
 
+    new Array(3).fill(true).map((_, i) => items[(items.indexOf(currentItem) + 1 + i) % items.length]).map((item) => {
+            console.log(item);
+        }
+    )
+
     const nextItem = () => {
         setCurrentItem(items[items.indexOf(currentItem) === items.length - 1 ? 0 : items.indexOf(currentItem) + 1]);
     };
@@ -37,28 +43,29 @@ export const Carousel = ({items, autoplay = true, interval = 5000}: CarouselProp
 
     return (
         <>
-            <Box sx={{display: 'flex', alignItems: 'center', position: 'relative', width: 'fit-content'}}>
+            <div style={{display: 'flex', alignItems: 'center', position: 'relative', width: 'fit-content'}}>
                 <IconButton sx={{position: 'absolute', left: '1rem'}} onClick={prevItem}>
                     <ArrowBack/>
                 </IconButton>
                 <IconButton sx={{position: 'absolute', right: '1rem'}} onClick={nextItem}>
                     <ArrowForward/>
                 </IconButton>
-                <Box sx={{
-                    position: 'absolute',
-                    width: '100%',
-                    textAlign: 'center',
-                    backgroundColor: 'rgba(0, 0, 0, 0.3)',
-                    color: 'white',
-                    bottom: '2rem'
-                }}>{currentItem.title}</Box>
-                <img src={currentItem.url} alt={currentItem.title} loading="lazy"/>
-                <Box>
-                    {/*{new Array(5).fill(true).map((_, index) => (*/}
-                    {/*    <CarouselIndicator text={'1'} active={false}/>*/}
-                    {/*))}*/}
+
+                <img src={currentItem.url} alt={currentItem.title}/>
+                <Box sx={{position: 'absolute', bottom: '1rem', left: '1rem', right: '1rem'}}>
+                    <Box sx={{backgroundColor: 'rgba(0,0,0,0.2)', padding: '0.5rem'}}>{currentItem.title}</Box>
+                    <Box sx={{display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)'}} justifyContent={'space-between'}>
+                        {new Array(3).fill(true).map((_, i) => items[(items.indexOf(currentItem) - 1 + items.length - i) % items.length]).reverse().map((item) =>
+                            <CarouselThumbnail url={item.thumbnailUrl}/>
+                        )}
+                        <CarouselThumbnail url={currentItem.thumbnailUrl}/>
+                        {new Array(3).fill(true).map((_, i) => items[(items.indexOf(currentItem) + 1 + i) % items.length]).map((item) =>
+
+                            <CarouselThumbnail url={item.thumbnailUrl}/>
+                        )}
+                    </Box>
                 </Box>
-            </Box>
+            </div>
         </>
     );
 };
