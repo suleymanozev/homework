@@ -16,15 +16,15 @@ function Photos() {
                 </Grid>
                 <Grid size={10} />
                 <Grid size={4}>
-                    <Carousel items={photos}/>
+                    <Carousel items={photos} thumbnailsEnabled={false}/>
                 </Grid>
                 <Grid size={8} />
                 <Grid size={6}>
-                    <Carousel items={photos}/>
+                    <Carousel items={photos} albumEnabled={false}/>
                 </Grid>
                 <Grid size={6} />
                 <Grid size={8}>
-                    <Carousel items={photos}/>
+                    <Carousel items={photos} indicatorsEnabled={false}/>
                 </Grid>
                 <Grid size={4} />
                 <Grid size={10}>

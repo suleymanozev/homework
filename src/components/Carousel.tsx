@@ -11,16 +11,16 @@ import {useObserveElementWidth} from "../hooks/observable-element-width";
 interface CarouselProps {
     items: Photo[];
     autoplay?: boolean;
-    interval?: number;
-    thumbnailsEnabled: boolean;
-    albumEnabled: boolean;
-    indicatorsEnabled: boolean;
+    speed?: number;
+    thumbnailsEnabled?: boolean;
+    albumEnabled?: boolean;
+    indicatorsEnabled?: boolean;
 }
 
 export const Carousel = ({
                              items,
                              autoplay = true,
-                             interval = 5000,
+                             speed = 5000,
                              thumbnailsEnabled = true,
                              albumEnabled = true,
                              indicatorsEnabled = true
@@ -31,11 +31,16 @@ export const Carousel = ({
     const width = useObserveElementWidth(containerRef);
 
     const prevItems = (count: number = 1): Photo[] => {
-        return new Array(count).fill(true).map((_, i) => items[(items.indexOf(currentItem) - 1 + items.length - i) % items.length]).reverse()
+        return new Array(count)
+            .fill(true)
+            .map((_, i) => items[(items.indexOf(currentItem) - 1 + items.length - i) % items.length])
+            .reverse()
     }
 
     const nextItems = (count: number = 1): Photo[] => {
-        return new Array(count).fill(true).map((_, i) => items[(items.indexOf(currentItem) + 1 + i) % items.length])
+        return new Array(count)
+            .fill(true)
+            .map((_, i) => items[(items.indexOf(currentItem) + 1 + i) % items.length])
     }
 
     useEffect(() => {
@@ -43,7 +48,7 @@ export const Carousel = ({
         if (autoplay && !hover) {
             id = window.setInterval(() => {
                 setCurrentItem(nextItems(1)[0]);
-            }, interval);
+            }, speed);
         }
 
         return () => {
