@@ -12,7 +12,7 @@ function Photos() {
         <>
             <Grid container spacing={2}>
                 <Grid size={12}>
-                    <Typography variant='h3'>
+                    <Typography variant='h5'>
                         KISA AÇIKLAMA: Gönderdiğiniz verinin büyüklüğü sebebiyle tüm `photo` öğelerini çekip `map`
                         fonksiyonuyla render'lamak istemedim. Bir nevi sanallaştırma yaparak performanslı olmasını
                         istedim. Ayrıca `https://jsonplaceholder.typicode.com/photos` adresinden dönen image placeholder
