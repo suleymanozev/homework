@@ -1,1 +1,2 @@
-export * from './photos.ts';
+export * from './photos';
+export * from './albums';
