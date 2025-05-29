@@ -100,11 +100,11 @@ export const Carousel = ({
                         borderRadius: '0 0 0.5rem 0.5rem'
                     }} justifyContent={'space-between'}>
                         {prevItems(3).map((item) =>
-                            <CarouselThumbnail key={item.id} item={item} setCurrentItem={setCurrentItem}/>
+                            <CarouselThumbnail key={item.id} containerWidth={width} item={item} setCurrentItem={setCurrentItem}/>
                         )}
-                        <CarouselThumbnail key={currentItem.id} item={currentItem} setCurrentItem={setCurrentItem}/>
+                        <CarouselThumbnail key={currentItem.id} containerWidth={width} item={currentItem} setCurrentItem={setCurrentItem}/>
                         {nextItems(3).map((item) =>
-                            <CarouselThumbnail key={item.id} item={item} setCurrentItem={setCurrentItem}/>
+                            <CarouselThumbnail key={item.id} containerWidth={width} item={item} setCurrentItem={setCurrentItem}/>
                         )}
                     </Box>
                 </Box>}
