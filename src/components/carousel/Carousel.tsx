@@ -1,12 +1,12 @@
 import {useEffect, useRef, useState} from "react";
 
-import type {Photo} from "../types/photo";
+import type {Photo} from "../../types";
 import {Box, IconButton} from "@mui/material";
 import {ArrowBack, ArrowForward} from "@mui/icons-material";
 import {CarouselThumbnail} from "./CarouselThumbnail.tsx";
-import {CarouselAlbum} from "./CorouselAlbum";
-import CarouselIndicator from "./CarouselIndicator";
-import {useObserveElementWidth} from "../hooks/observable-element-width";
+import {CarouselAlbum} from "./CorouselAlbum.tsx";
+import CarouselIndicator from "./CarouselIndicator.tsx";
+import {useObserveElementWidth} from "../../hooks";
 
 interface CarouselProps {
     items: Photo[];

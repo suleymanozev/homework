@@ -1,5 +1,5 @@
-import type {Photo} from "../types/photo.ts";
-import {useGetAlbum} from "../hooks";
+import type {Photo} from "../../types";
+import {useGetAlbum} from "../../hooks";
 import {Box, type BoxProps} from "@mui/material";
 
 interface CarouselAlbumProps extends BoxProps {

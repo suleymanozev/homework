@@ -1,4 +1,4 @@
-import Carousel from "./Carousel.tsx";
+import Carousel from "./carousel";
 import {useGetPhotos} from "../hooks";
 import {Grid, Typography} from "@mui/material";
 

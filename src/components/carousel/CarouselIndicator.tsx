@@ -1,4 +1,4 @@
-import type {Photo} from "../types/photo.ts";
+import type {Photo} from "../../types";
 
 interface CarouselIndicatorProps {
     item: Photo,
