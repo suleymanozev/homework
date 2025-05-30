@@ -7,7 +7,6 @@ interface CarouselAlbumProps extends BoxProps {
 }
 
 export function CarouselAlbum({item, ...props}: CarouselAlbumProps) {
-    console.log("CarouselAlbum", item);
     const {album, isAlbumLoading, isError} = useGetAlbum(item.albumId)
 
     return (
